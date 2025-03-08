@@ -1,0 +1,525 @@
+body{
+    background-color: #477484;
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 30;
+    scroll-behavior: smooth;
+}
+
+.obesity_img{
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;;
+    left: 0;
+    z-index: -1;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 1%;
+    height: 100vh;
+    border: 8px solid black;
+}
+
+.obesity_checker_heading{
+    font-family: "Aileron";
+    font-size: 100px;
+    font-weight: 100;
+    font-style: normal;
+    color: aliceblue;
+    height: 30%;
+}
+
+.quote{
+    color: aliceblue;
+    font-size: 20px;
+    font-family: "DejaVu Serif";
+    height: 30%;
+}
+
+.login_button{
+    height: 20%;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1%;
+}
+.sign_in_btn:hover{
+    background-color: gold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+.sign_up_btn:hover{
+    background-color: gold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.sign_in_btn{
+    background-color: #1D4B69;
+    font-family: "DejaVu Serif";
+    color: aliceblue;
+    height: 40%;
+    width: 100%;
+    border: transparent;
+    border-radius: 2rem;
+    font-size: 30px;
+    padding: 10px 30px;
+}
+.sign_up_btn{
+    background-color: #1D4B69;
+    font-family: "DejaVu Serif";
+    color: aliceblue;
+    height: 40%;
+    width: 100%;
+    border: transparent;
+    border-radius: 2rem;
+    font-size: 30px;
+    padding: 10px 30px;
+}
+.container{
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.footer_home_pg{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    height: 60%;
+}
+
+.logo_section{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 35%;
+    padding: 2%;
+    margin-right: 2%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+}
+
+/* Animation for smooth fade-in and fade-out */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+}
+
+/* Styling for popups */
+.popup {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* Center the popup content */
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 350px;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button style */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Button styles */
+button {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Ensure input fields are properly styled */
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+
+.obesity_checker_icon{
+    height: 23.5%;
+    width: 20%;
+    background-image: url(assets/obesity_checker_icon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.josefin-sans-obesity_quote{
+    font-family: "Josefin Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.obesity_quote{
+    margin-left: 5%;
+}
+
+.contact{
+    display: flex;
+    flex-direction: column;
+    height: 48%;
+    width: 54%;
+    margin-left: 4%;
+}
+
+.contact_link{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.facebook_icon{
+    height: 65%;
+    width: 15%;
+    background-image: url(./assets/facebook_icon.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+.facebook_icon:hover{
+    background-color: palevioletred;
+    opacity: 0.8;
+    border-radius: 8rem;
+}
+.twitter_icon{
+    height: 65%;
+    width: 15%;
+    background-image: url(./assets/twitter_icon.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+.twitter_icon:hover{
+    background-color: palevioletred;
+    opacity: 0.8;
+    border-radius: 8rem;
+}
+.insta_icon{
+    height: 65%;
+    width: 15%;
+    background-image: url(./assets/insta_icon.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+.insta_icon:hover{
+    background-color: palevioletred;
+    opacity: 0.8;
+    border-radius: 8rem;
+}
+.pinterest_icon{
+    height: 65%;
+    width: 15%;
+    background-image: url(./assets/pinterest_icon.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+.pinterest_icon:hover{
+    background-color: palevioletred;
+    opacity: 0.8;
+    border-radius: 8rem;
+}
+
+.vertical_line{
+    border: 0.03rem solid white;
+    border-radius: 5rem;
+    margin-right: 2%;
+    height: 80%;
+}
+
+
+.email_textbox{
+    width: 55%;
+    height: 90%;
+    margin-right: 1.5%;
+    display: flex;
+    flex-direction: column;
+}
+.sign_line{
+    margin-left: 2%;
+}
+.subs_txtbox{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+
+.webmd-footer .footer-container .footer-nl-social .toc-nl-mod .newsletter-main .content-container .email-container .email-input {
+    margin-bottom: 0;
+    max-width: 100% !important;
+}
+.email-container .email-input {
+    width: 60% !important;
+    border: 0.01rem solid white;
+}
+.webmd-input__div {
+    color: #444;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-family: Source Sans Pro, Arial, sans-serif;
+    font-size: 1rem;
+    outline: 0;
+    position: relative;
+}
+.webmd-footer .footer-container .footer-nl-social .toc-nl-mod .newsletter-main .content-container .email-container .webmd-button--primary:disabled {
+    background: #b3b3b3 !important;
+    color: #676767;
+    font-family: Source Sans Pro, Arial, sans-serif;
+}
+.webmd-footer .footer-container .footer-nl-social .toc-nl-mod .newsletter-main .content-container .email-container button {
+    border-radius: 0 .25rem .25rem 0;
+    font-family: Source Sans Pro, Arial, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+
+.board{
+    height: 20%;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #fbc2eb);
+    background-size: 300% 300%; /* Makes the gradient animation smoother */
+    animation: gradientAnimation 6s ease infinite;
+    text-align: left;
+    padding-left: 1%;
+    display: flex;
+    flex-direction: row;
+}
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.caveat-ad_board{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+.obesity_grad_img{
+    height: 80%;
+    width: 30%;
+    background-size: cover;
+    margin-left: 15%;
+    margin-top: 1%;
+    opacity: 0.7;
+    background-image: url(https://thumbs.dreamstime.com/z/vector-medical-poster-obesity-reasons-disease-prevention-illustration-fat-boy-vector-medical-poster-obesity-156702466.jpg);
+}
+  
+.obesity_info_section{
+    font-family: "DejaVu Serif";
+    font-weight: 400;
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    height: 7%;
+}
+
+.ob_info{
+    color: white;
+    height: 5%;
+    border-radius: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    margin-left: 1%;
+    cursor: pointer;
+}
+
+
+.ob_info:hover{
+    color: #AEEA94;
+    background-color: #FFFBCA;
+}
+
+.horizontal_line{
+    border: 0.05rem solid white;
+    width: 97%;
+    margin-left: 1.5%;
+}
+
+.section{
+    display: none;
+}
+.section.visible {
+    display: block;
+}
+.policies:hover{
+    display: block;
+}
+.about:hover{
+    display: block;
+}
+.display_policy{
+    border: 0.3rem solid white;
+    height: 7%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.obesity_info{
+    text-decoration: none;
+    color: white;
+}
+.footer_list{
+    list-style-type: none;
+}
+
+/* Container for the email form */
+.email-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    left: 5%;
+    gap: 10px;
+    padding: 3px;
+    background: #f9f9f9; /* Light background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Adjust width as needed */
+    margin: auto;
+}
+
+/* Email Input Field */
+.webmd-input__inner {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    transition: border 0.3s ease-in-out;
+    width: 70%;
+}
+
+/* Input Focus Effect */
+.webmd-input__inner:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Placeholder Styling */
+.webmd-input__inner::placeholder {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* Button Styling */
+.webmd-button {
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 30%;
+    transition: background 0.3s ease;
+}
+
+/* Button Hover Effect */
+.webmd-button:hover {
+    background: #0056b3;
+}
+
+/* Button Press Effect */
+.webmd-button:active {
+    transform: scale(0.98);
+}
+
+/* Error Handling for Invalid Email */
+.webmd-input__inner:invalid {
+    border-color: red;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .email-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .webmd-button {
+        width: 100%;
+    }
+}

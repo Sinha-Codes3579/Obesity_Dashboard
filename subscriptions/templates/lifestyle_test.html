@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle Test</title>
+    <link rel="stylesheet" href="{% static 'subscriptions/css/lifestyle_test.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="life_backgnd" style="background-image: url('{% static 'subscriptions/assets/lifestyle-test-banner.jpg' %}');"></div>
+    <div class="lifestyle_test">
+        <div class="pics"><div class="pic_backgnd1" style="background-image: url('{% static 'subscriptions/assets/lifestyle-test1.jpg' %}');"></div></div>
+        <div class="pics"><div class="pic_backgnd2" style="background-image: url('{% static 'subscriptions/assets/lifestyle-test2.jpg' %}');"></div></div>
+        <div class="pics"><div class="pic_backgnd3" style="background-image: url('{% static 'subscriptions/assets/lifestyle-test3.jpg' %}');"></div></div>
+    </div>
+    <div class="container">
+        <h1>Lifestyle Test</h1>
+        <p>Fill in the details below to assess your lifestyle risk.</p>
+        <form id="lifestyleForm" method="POST" action="{% url 'lifestyle_test_api' %}">
+            {% csrf_token %}
+            <table>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" name="name" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">E-mail:</label></td>
+                <td><input type="email" id="email" name="email" required class="input"></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age:</label></td>
+                <td><input type="number" id="age" name="age" required></td>
+            </tr>
+            <tr>
+                <td><label for="gender">Gender:</label></td>
+                <td><select id="gender" name="gender">
+                    <option value="" style="color: darkgray;">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="non_binary">Non-Binary</option>
+                    <option value="other">Other</option>
+                    <option value="prefer_not_to_say">Prefer not to say</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="height">Height (feet/inches):</label></td>
+                <td><input type="text" id="height" name="height" placeholder="Enter height in format 4'5''" required></td>
+            </tr>
+            <tr>
+                <td><label for="weight">Weight (kg):</label></td>
+                <td><input type="number" id="weight" name="weight" required></td>
+            </tr>
+            <tr>
+                <td><label for="location">You belong from:</label></td>
+                <td><select id="location" name="location" required>
+                    <option value="">Select</option>
+                    <option value="north_india">North India</option>
+                    <option value="south_india">South India</option>
+                    <option value="east_india">East India</option>
+                    <option value="west_india">West India</option>
+                    <option value="other">Other</option>
+                </select></td>
+            </tr>
+            
+            <tr>
+                <td><label for="health_conditions">Health Conditions:</label></td>
+                <td><select id="health_conditions" name="health_conditions" required>
+                    <option value="">Select</option>
+                    <option value="normal">Normal</option>
+                    <option value="hypertension">Hypertension</option>
+                    <option value="diabetes">Diabetes</option>
+                    <option value="asthma">Asthma</option>
+                    <option value="other">Other</option>
+                </select></td>
+            </tr>
+
+            <tr>
+                <td><label for="alcohol_consumption">Alcohol Consumption:</label></td>
+                <td><select id="alcohol_consumption" name="alcohol_consumption" required>
+                    <option value="">Select</option>
+                    <option value="occasionally">Occasionally</option>
+                    <option value="regularly">Regularly</option>
+                    <option value="never">Never</option>
+                </select></td>
+            </tr>
+
+            <tr>
+                <td><label for="sleeping_hours">Sleeping Hours:</label></td>
+                <td><select id="sleeping_hours" name="sleeping_hours" required>
+                    <option value="">Select</option>
+                    <option value="less_than_5">Less than 5 hours</option>
+                    <option value="5_to_7">5 to 7 hours</option>
+                    <option value="more_than_7">More than 7 hours</option>
+                </select></td>
+            </tr>
+
+            <tr>
+                <td><label for="lifestyle">Describe your lifestyle:</label></td>
+                <td><select id="lifestyle" name="lifestyle" required>
+                    <option value="">Select</option>
+                    <option value="lying_around">I like lying around a lot</option>
+                    <option value="active">Active lifestyle</option>
+                    <option value="balanced">Balanced lifestyle</option>
+                    <option value="social">Very social</option>
+                    <option value="busy">Busy lifestyle</option>
+                </select></td>
+            </tr>
+
+            <tr>
+                <td><label for="exercise_regularity">Regularity in doing physical exercise:</label></td>
+                <td><select id="exercise_regularity" name="exercise_regularity" required>
+                    <option value="">Select</option>
+                    <option value="everyday">Every day</option>
+                    <option value="occasionally">Occasionally</option>
+                    <option value="never">Never</option>
+                </select></td>
+            </tr>
+
+            <tr>
+                <td><label for="proud_of">I feel I do not have much to be proud of:</label></td>
+                <td><select id="proud_of" name="proud_of" required>
+                    <option value="">Select</option>
+                    <option value="strongly_disagree">Strongly disagree</option>
+                    <option value="disagree">Disagree</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="agree">Agree</option>
+                    <option value="strongly_agree">Strongly agree</option>
+                </select></td>
+            </tr>
+
+            <tr>
+                <td><label for="positive_attitude">I take a positive attitude toward myself:</label></td>
+                <td><select id="positive_attitude" name="positive_attitude" required>
+                    <option value="">Select</option>
+                    <option value="strongly_disagree">Strongly disagree</option>
+                    <option value="disagree">Disagree</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="agree">Agree</option>
+                    <option value="strongly_agree">Strongly agree</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="self_satisfaction">I'm satisfied with myself, on a whole/strong:</label></td>
+                <td><select id="self_satisfaction" name="self_satisfaction" required>
+                    <option value="">Select</option>
+                    <option value="strongly_disagree">Strongly disagree</option>
+                    <option value="disagree">Disagree</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="agree">Agree</option>
+                    <option value="strongly_agree">Strongly agree</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="self_respect">I wish I could have more respect for myself:</label></td>
+                <td><select id="self_respect" name="self_respect" required>
+                    <option value="">Select</option>
+                    <option value="strongly_disagree">Strongly disagree</option>
+                    <option value="disagree">Disagree</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="agree">Agree</option>
+                    <option value="strongly_agree">Strongly agree</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="feeling_useless">I certainly feel useless at times:</label></td>
+                <td><select id="feeling_useless" name="feeling_useless" required>
+                    <option value="">Select</option>
+                    <option value="strongly_disagree">Strongly disagree</option>
+                    <option value="disagree">Disagree</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="agree">Agree</option>
+                    <option value="strongly_agree">Strongly agree</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="not_good_enough">At times, I think I'm not good at all:</label></td>
+                <td><select id="not_good_enough" name="not_good_enough" required>
+                    <option value="">Select</option>
+                    <option value="strongly_disagree">Strongly disagree</option>
+                    <option value="disagree">Disagree</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="agree">Agree</option>
+                    <option value="strongly_agree">Strongly agree</option>
+                </select></td>
+            </tr>
+            
+            </table>
+            
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result">
+            
+        </div>
+    </div>
+    <script>
+        const form = document.getElementById("lifestyleForm")
+        const result = document.getElementById("result")
+        document.getElementById('lifestyleForm').addEventListener('submit', function(event) {
+            event.preventDefault();// Prevent default form submission
+        
+        // Hide the form smoothly
+            form.style.opacity = "0";
+            form.style.transition = "opacity 0.4s ease-in-out";
+
+            setTimeout(() => {
+                form.style.display = "none"; // Completely hide the form after fade out
+                result.style.display = "block"; // Show result
+                result.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 400);
+            let formData = new FormData(this);
+            fetch("{% url 'lifestyle_test_api' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}"
+                }
+            }).then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert("Error: " + data.error);
+                } else {
+                    document.getElementById("result").innerHTML = `
+                        <h2>Results:</h2>
+                        <p><strong>BMI:</strong> ${data.bmi}</p>
+                        <p><strong>Obesity Level:</strong> ${data.obesity_level}</p>
+    
+                        <h3>Obesity Level Distribution</h3>
+                        <img src="${data.obesity_graph}" alt="Obesity Graph">
+    
+                        <h3>Lifestyle vs. Obesity</h3>
+                        <img src="${data.lifestyle_graph}" alt="Lifestyle Graph">
+    
+                        <h3>Mental Health & Alcohol Consumption</h3>
+                        <img src="${data.mental_health_graph}" alt="Mental Health Graph">
+                    `;
+                    document.getElementById("result").style.display = "block"
+                }
+            })
+              .catch(error => console.error("Error:", error));
+        });
+            
+        
+    </script>
+</body>
+</html>

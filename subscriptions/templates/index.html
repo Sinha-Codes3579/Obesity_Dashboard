@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'subscriptions/css/style.css' %}"  type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <header id="body-header">
+        <div class="obesity_img">
+          <img src="{% static '/subscriptions/assets/obesity_bg_image.png' %}" alt="Obesity Background">
+        </div>
+        <div class="content">
+            <h1 class="obesity_checker_heading">Obesity Checker</h1>
+            <h4 class="quote">Your Journey to health is a series of small steps.<br/><i style="color: #CCCCCC; font-family: 'DejaVu Serif'; font-size: 20px">Take one today!</i></h4>
+            <div class="login_button">
+
+                {% comment %} sign in {% endcomment %}
+                <!-- Sign In Button (Redirects to Login Page) -->
+                <a href="{% url 'login' %}">
+                  <button class="sign_in_btn">Sign In</button>
+                </a>
+
+<!-- Sign Up Button (Redirects to Signup Page) -->
+                <a href="{% url 'signup' %}">
+                  <button class="sign_up_btn">Sign Up</button>
+                </a>
+
+            </div>
+        </div>
+    </header>
+
+    {% comment %} Footer section {% endcomment %}
+    <div class="container">
+      <footer class="footer_home_pg">
+        <div class="row">
+          <div class="logo_section">
+            <div class="obesity_checker_icon"></div>
+            <h1 class="obesity_quote">Health is not valued <br/> Till sickness comes.</h1>
+            <div class="contact">
+              <span class="contact_link">
+                <a href="#" title="Facebook" class="facebook_icon"><img src="{% static '/subscriptions/assets/facebook_icon.png' %}" height="80%" width="100%"></a>
+                <a href="#" title="Twitter" class="twitter_icon"><img src="{% static '/subscriptions/assets/twitter_icon.png' %}" height="80%" width="100%"></a>
+                <a href="#" title="Instagram" class="insta_icon"><img src="{% static '/subscriptions/assets/insta_icon.png' %}" height="80%" width="100%"></a>
+                <a href="#" title="Pinterest" class="pinterest_icon"><img src="{% static '/subscriptions/assets/pinterest_icon.png' %}" height="80%" width="100%"></a>
+              </span>
+              <span style="display: flex; flex-direction: row; align-items: center; margin-left: 5%;"><h5>A STEP TOWARD <span class="balanced_living" style="font-weight: 200; color: #CCCCCC;"><span>BALANCED<b style="color: aliceblue;">LIVING</b></span><img src="{% static 'subscriptions/assets/shape-gradients-color-aesthetic-free-png.webp' %}" alt="Gradient Shape"height="14" width="160" style="magrgin-left:15px"></span></h5></span>
+            </div>
+          </div>
+          <div class="vertical_line"></div>
+          <div class="email_textbox">
+              <div class="sign_line"><h2>Sign In for free Obesity Checker</h2></div>
+              <div class="subs_txtbox">
+                <h4>Get wellness tips to help you live happier and healthier</h4>
+                <div class="email-container">
+                  <form id="emailForm" action="{% url 'subscribe' %}" method="POST" class="email-container">
+                    {% csrf_token %}
+                    <div class="webmd-input__div webmd-input-noLabel webmd-input--medium email-input">
+                        <input class="webmd-input__inner" type="email" name="email" autocomplete="off" placeholder="Enter your email address" aria-label="Enter email address" required>
+                    </div>
+                    <button class="webmd-button webmd-button--primary webmd-button--medium" type="submit"><span>Subscribe</span></button>
+                  </form>
+                                  
+                </div>
+                <div id="subscription-message"></div>
+              </div>
+              <div><h5 class="term_condition">By clicking Subscribe, I agree to the WebMD <a href="#" style="color: aliceblue;">Terms & Conditions</a> & <a href="#" style="color: aliceblue;">Privacy Policy</a> and<br/> understand that I may opt out of WebMD subscriptions at any time.</h5></div>
+          </div>
+          
+        </div>
+        <div class="board">
+          <div style="display: flex; flex-direction: column;"><h1 class="caveat-ad_board">Welcome to your one-stop solution for managing obesity.<br/></h1>
+          <h3 class="caveat-ad_board"> Stay informed, track your BMI, and unlock tips to transform your lifestyle—all in one place!</h3></div>
+          <div class="obesity_grad_img"></div>
+        </div>
+        <div class="obesity_info_section">
+          <a class="ob_info obesity_infon" href="#obesity_info" style="text-decoration: none;">Obesity Information</a>
+          <a class="ob_info policies" href="#policies" style="text-decoration: none;">Policies</a>
+          <a class="ob_info about" href="#about" style="text-decoration: none;">About</a>
+        </div>
+        <div class="horizontal_line"></div>
+        <div class="display_policy">
+        <div id="obesity_infom" class="section visible">
+          <ul style="display: flex; flex-direction: row;">
+            <li class="footer_list"><a href = "#" class="obesity_info">Undestanding Obesity</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Signs & Symptoms of Obesity</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Obesity Prevention & Detection</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Obesity Treatment</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Obesity Research Highlights</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">News and Stories</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Glossary</a></li>
+          </ul>
+        </div>
+        <div id="policies" class="section">
+          <ul>
+            <li class="footer_list"><a href = "#" class="obesity_info">Privacy Policy</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Cookie Policy</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Editorial Policy</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Advertising Policy</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Correction Policy</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Terms of Use</a></li>
+          </ul>
+        </div>
+        <div id="about" class="section">
+          <ul>
+            <li class="footer_list"><a href = "#" class="obesity_info">Contact Us</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Careers</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Newsletters</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Obesity Dashboard Website</a></li>
+            <li class="footer_list"><a href = "#" class="obesity_info">Corporate</a></li>
+          </ul>
+        </div></div>
+      </footer>
+    </div>
+    <script src="{% static 'subscriptions/js/script.js' %}" defer></script>
+    
+</body>
+
+</html>

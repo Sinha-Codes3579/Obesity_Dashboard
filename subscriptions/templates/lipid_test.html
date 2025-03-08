@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'subscriptions/css/lipid_test.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Lipid Profile Test</h2>
+        <form id="lipidTestForm" method="POST" action="{% url 'lipid_test_view' %}">
+            {% csrf_token %}
+        <div class="input_box">
+            <label for="haemoglobin_test">Haemoglobin Alc (HbAlc) Test for Diabetes(%):</label>
+            <input type="number" id="haemoglobin_number" name="haemoglobin_test" min="0" max="14" value="4">
+            <input type="range" id="haemoglobin_slider" name="haemoglobin_test" min="0" max="14" value="4">
+        </div>
+        <div class="input_box">
+            <label for="waistcircum_test">Waist Circumference(cm):</label>
+            <input type="number" id="waistcircum_number" name="waistcircum_test" min="0" max="150" value="60">
+            <input type="range" id="waistcircum_slider" name="waistcircum_test" min="0" max="150" value="60">
+        </div>
+        <div class="input_box">
+            <label for="glucose_test">Fasting Plasma Glucose(mg/dL):</label>
+            <input type="number" id="glucose_number" name="glucose_test" min="0" max="300" value="60">
+            <input type="range" id="glucose_slider" name="glucose_test" min="0" max="300" value="60">
+        </div>
+        <div class="input_box">
+            <label for="cholestrol_test">Total Cholestrol(mg/dL):</label>
+            <input type="number" id="cholestrol_number" name="cholestrol_test" min="0" max="400" value="100">
+            <input type="range" id="cholestrol_slider" name="cholestrol_test" min="0" max="400" value="100">
+        </div>
+        <div class="input_box">
+            <label for="triglycerides_test">High Triglycerides(mg/dL):</label>
+            <input type="number" id="triglycerides_number" name="triglycerides_test" min="0" max="1000" value="50">
+            <input type="range" id="triglycerides_slider" name="triglycerides_test" min="0" max="1000" value="50">
+        </div>
+        <div class="input_box">
+            <label for="ldlipoprotein_test">Low-Density Lipoprotein(mg/dL):</label>
+            <input type="number" id="ldlipoprotein_number" name="ldlipoprotein_test" min="0" max="250" value="50">
+            <input type="range" id="ldlipoprotein_slider" name="ldlipoprotein_test" min="0" max="250" value="50">
+        </div>
+        <div class="input_box">
+            <label for="hdlipoprotein_test">High-Density Lipoprotein(HDL):</label>
+            <input type="number" id="hdlipoprotein_number" name="hdlipoprotein_test" min="0" max="100" value="20">
+            <input type="range" id="hdlipoprotein_slider" name="hdlipoprotein_test" min="0" max="100" value="20">
+        </div>
+        <div class="input_box">
+            <label for="vldlipoprotein_test">Very Low-Density Lipoprotein(VLDL):</label>
+            <input type="number" id="vldlipoprotein_number" name="vldlipoprotein_test" min="0" max="80" value="5">
+            <input type="range" id="vldlipoprotein_slider" name="vldlipoprotein_test" min="0" max="80" value="5">
+        </div>
+        <div class="input_box">
+            <label for="hdlratio_test">Cholesterol/HDL Ratio:</label>
+            <input type="number" id="hdlratio_number" name="hdlratio_test" min="0" max="8.0" value="1.5">
+            <input type="range" id="hdlratio_slider" name="hdlratio_test" min="0" max="8.0" value="1.5">
+        </div>
+        <button type="submit">Submit</button></form>
+        <div id = "result">
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#result").hide();  // Hide the result section initially
+        
+            $("#lipidTestForm").on("submit", function (event) {
+                event.preventDefault();  
+        
+                let formData = $(this).serialize();  
+        
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'lipid_test_view' %}",
+                    data: formData,
+                    dataType: "json",  // Ensure the response is treated as JSON
+                    success: function (response) {
+                        // Show result section
+                        $("#lipidTestForm").hide();
+                        $("#result").show();
+        
+                        // Update result content dynamically
+                        $("#result").html(`
+                            <h2>Prediction Result</h2>
+                            <p>Your predicted risk level is: <strong>${response.risk_level}</strong></p>
+                            <a href="{% url 'lipid_test' %}">Test Again</a>
+                        `);
+        
+                        // Scroll to the result section smoothly
+                        $("html, body").animate({ scrollTop: $("#result").offset().top }, 1000);
+                    },
+                    error: function () {
+                        alert("Error processing request.");
+                    }
+                });
+            });
+        });
+        
+        
+    </script>
+
+</body>
+</html>

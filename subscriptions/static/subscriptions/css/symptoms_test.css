@@ -1,0 +1,127 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+.life_backgnd {
+    position: relative;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    z-index: 1;
+}
+.lifestyle_test {
+    position: relative;
+    top: -10vh;
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 1;
+    background: transparent;
+}
+.pics{
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    z-index: 2;
+    border-radius: 0.8rem;
+    background: linear-gradient(135deg, aliceblue, #4A6D7C);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pics:nth-child(1) {
+    left: 13%;
+}
+
+.pics:nth-child(2) {
+    left: 43%;
+}
+
+.pics:nth-child(3) {
+    left: 73%;
+}
+
+.pic_backgnd1, .pic_backgnd2, .pic_backgnd3 {
+    z-index: 2;
+    border-radius: 0.8rem;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 94%;
+    width: 94%;
+}
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+}
+#symptomsForm {
+    font-size: 25px;
+    left: 15%;
+    font-weight: 400;
+    width: 80%;
+    text-align: center;
+    top: -2vh;
+}
+input {
+    margin-top: 3%;
+    width: 70%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 1rem;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+}
+.dropdown {
+    width: 50%;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    display: none;
+    z-index: 10;
+    margin-left: 20%;
+}
+.dropdown label {
+    font-size: 16px;
+    margin-left: 10px;
+    display: flex;
+    text-align: center;
+}
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    width: 30%;
+    box-sizing: border-box;
+    margin-top: 5%;
+}
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+#result {
+    display: none;  /* Initially hidden */
+    width: 100%;
+    opacity: 0;  /* Make it transparent initially */
+    transition: opacity 0.4s ease-in-out;
+}
+#result.show {
+    display: block;  /* Ensure it appears */
+    opacity: 1;  /* Fade in */
+}

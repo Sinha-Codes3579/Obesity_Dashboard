@@ -1,0 +1,133 @@
+body{
+    font-family: 'ubuntu';
+}
+.life_backgnd{
+    position: relative;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    z-index: 1;
+}
+.lifestyle_test {
+    position: relative;
+    top: -10vh; /* Moves it up by 15vh (50% of .life_backgnd height) */
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 1;
+    background: transparent; /* Optional: Add background color for visibility */
+}
+.pics{
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    z-index: 2;
+    border-radius: 0.8rem;
+    background: linear-gradient(135deg, aliceblue, #4A6D7C);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pics:nth-child(1) {
+    left: 13%;
+}
+
+.pics:nth-child(2) {
+    left: 43%;
+}
+
+.pics:nth-child(3) {
+    left: 73%;
+}
+
+.pic_backgnd1, .pic_backgnd2, .pic_backgnd3 {
+    z-index: 2;
+    border-radius: 0.8rem;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 94%;
+    width: 94%;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    margin-top: 10%;
+    left: 3%;
+}
+#lifestyleForm{
+    position: relative;
+    font-size: 25px;
+    left: 10%;
+    font-weight: 400;
+    width: 80%;
+    margin-top: 5%;
+}
+table {
+    width: 100%;
+    table-layout: fixed; /* Ensures a consistent column layout */
+}
+
+td{
+    padding: 10px 0;
+}
+input{
+    margin-left: 2%;
+    border-radius: 1rem;
+    width: 60%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 300;
+    padding-left: 10px;
+}
+select{
+    width: 70%;
+    border-radius: 1rem;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 300;
+    padding-left: 10px;
+    left: -20;
+}
+/* Style for the Submit Button */
+button[type="submit"] {
+background-color: #4CAF50; /* Green background */
+color: white; /* White text */
+padding: 15px 32px; /* Padding */
+text-align: center; /* Center the text */
+font-size: 18px; /* Font size */
+border: none; /* Remove the border */
+border-radius: 0.8rem; /* Rounded corners */
+cursor: pointer; /* Pointer cursor on hover */
+width: 30%; /* Full width */
+box-sizing: border-box; /* Box-sizing */
+margin-top: 5%; /* Space above the button */
+margin-left: 30%;
+}
+
+button[type="submit"]:hover {
+background-color: #45a049; /* Darker green on hover */
+}
+
+#result{
+    visibility: hidden;
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: height 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+#result.show {
+    visibility: visible;
+    height: auto;
+}

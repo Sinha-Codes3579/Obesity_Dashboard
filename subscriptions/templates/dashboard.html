@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="{% static 'subscriptions/css/flower.css' %}"  type="text/css" rel="stylesheet">
+    <link href="{% static 'subscriptions/css/dashboard.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Josefin+Sans:ital,wght@1,100..700&family=Merienda:wght@300..900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <form id="logout-form" method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="logout_forms" style="position: relative; left: 85%; top: 3%; background-color: #4CAF50; width: 10%; height: 40px">Logout</button>
+    </form>
+    <div id="flower-container"></div>
+
+    <div class="dashboard_page">
+        <div class="side_bar">
+             <ul class="h_sidebar">
+                <li><a href="#" class="home_sidebar">HOME</a></li>
+                <li><a href="#" class="home_sidebar">ACCOUNT</a></li>
+                <li><a href="#" class="home_sidebar">CHAT</a></li>
+                <li><a href="#" class="home_sidebar">APPOINTMENT</a></li>
+                <li><a href="#" class="home_sidebar">SCHEDULE</a></li>
+                <li><a href="#" class="home_sidebar">PAYMENT</a></li>
+                <li><a href="#" class="home_sidebar">SETTINGS</a></li>
+             </ul>
+        </div>
+        <div class="side_menu">
+            <img src="{% static 'subscriptions/assets/menu.webp' %}" class="menu" id="menu-icon" alt="Menu Icon" style="left: 0;">
+            <ul class="h" id="h">
+               <li><a href="#" class="home_side">HOME</a></li>
+               <li><a href="#" class="home_side">ACCOUNT</a></li>
+               <li><a href="#" class="home_side">CHAT</a></li>
+               <li><a href="#" class="home_side">APPOINTMENT</a></li>
+               <li><a href="#" class="home_side">SCHEDULE</a></li>
+               <li><a href="#" class="home_side">PAYMENT</a></li>
+               <li><a href="#" class="home_side">SETTINGS</a></li>
+            </ul>
+       </div>
+        <div class="main_sec">
+            <iframe src="{% url 'flower_page' %}" width="100%" height="100%" frameborder="0" style="position:absolute; top:0; left:0; z-index:-2;"></iframe>
+
+            <div class="f_col">
+                <div class="rectangle">
+                    <div class="rectangles_take_test" style="background-image: url('{% static '/subscriptions/assets/ObesityAgeRange.png' %}');"><a href="#" class="visit_site takeTestBtn">Visit Site</a></div>
+                    <div class="take_tests">Take tests</div>
+                </div>
+                <div class="rectangle">
+                    <div class="rectangles_health_status" style="background-image: url('{% static '/subscriptions/assets/health_status.jpg' %}');"><a href="{% url 'health_status' %}" class="visit_site">Visit Site</a></div>
+                    <div class="take_tests">Health Status</div>
+                </div>
+            </div>
+            <div class="f_col">
+                <div class="rectangle">
+                    <div class="rectangles_send_docs" style="background-image: url('{% static '/subscriptions/assets/FeaturedImage_Obesity.png' %}');"><a id="upload-docs-link" href="{% url 'upload_document' %}" class="visit_site">Visit Site</a></div>
+                    <div class="take_tests">Send Documents</div>
+                </div>
+                <div class="rectangle">
+                    <div class="rectangles_medications" style="background-image: url('{% static '/subscriptions/assets/obesity-drugs-for-weight-loss.jpg' %}');"><a href="#" class="visit_site">Visit Site</a></div>
+                    <div class="take_tests">Medications</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- take test buttons -->
+     <div class="modal" id="testSelectionModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="color: aliceblue; font-family: Philosopher;">Select a test</h2>
+            <button class="test-option" id="lifestyleTestBtn" onclick="location.href='{% url 'lifestyle_test' %}'"><b>Lifestyle Test</b></button>
+            <button class="test-option" id="lipidProfileBtn" onclick="location.href='{% url 'lipid_test' %}'"><b>Lipid Profile</b></button>
+            <button class="test-option" id="symptomsTestBtn" onclick="location.href='{% url 'symptoms_test' %}'"><b>Symptoms Test</b></button>
+        </div>
+     </div>
+     <script src="{% static 'subscriptions/js/dashboard.js' %}"></script>
+     <script>
+        console.log("✅ JavaScript is loaded!");
+        document.getElementById('upload-docs-link').addEventListener('click', function() {
+            window.location.href = this.getAttribute('href');
+        });
+     </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Status</title>
+</head>
+<body>
+    <h1>Health Status</h1>
+
+    {% if health_status %}
+        <p><strong>Latest Lipid Test Result:</strong> {{ latest_test.predicted_risk }}</p>
+        <p><strong>Date Taken:</strong> {{ latest_test.timestamp }}</p>
+        <p><strong>Best Match:</strong> {{ health_status.bestMatch }}</p>
+        <p><strong>Matched Diseases:</strong> {{ health_status.matchedDiseases|join:", " }}</p>
+        <p><strong>Recommendation:</strong> {{ health_status.recommendation }}</p>
+    {% else %}
+        <p>No lipid test results found. Please take the test.</p>
+        <p>No health data available. Please take a test.</p>
+    {% endif %}
+
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

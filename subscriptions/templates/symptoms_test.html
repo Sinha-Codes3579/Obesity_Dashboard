@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle Test</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'subscriptions/css/symptoms_test.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="life_backgnd" style="background-image: url('{% static 'subscriptions/assets/lifestyle-test-banner.jpg' %}');"></div>
+    <div class="lifestyle_test">
+        <div class="pics"><div class="pic_backgnd1" style="background-image: url('{% static 'subscriptions/assets/lifestyle-test1.jpg' %}');"></div></div>
+        <div class="pics"><div class="pic_backgnd2" style="background-image: url('{% static 'subscriptions/assets/lifestyle-test2.jpg' %}');"></div></div>
+        <div class="pics"><div class="pic_backgnd3" style="background-image: url('{% static 'subscriptions/assets/lifestyle-test3.jpg' %}');"></div></div>
+    </div>
+    <div class="container">
+        <h1>Hover over symptoms</h1>
+        <form id="symptomsForm" method="POST" action="{% url 'symptoms_test_api' %}">
+            {% csrf_token %}
+            
+
+            <div class="symptom-list">
+                <label for="selectedSymptoms">Select Symptoms:</label>
+                <input type="text" id="selectedSymptoms" name="selectedSymptoms" placeholder="Select Symptoms" readonly>
+                <div id="dropdown" class="dropdown">
+                    <label><input type="checkbox" name="symptoms" value="loss_of_balance"> Loss of Balance</label>
+                    <label><input type="checkbox" name="symptoms" value="prominent_veins_on_calf"> Prominent Veins on Calf</label>
+                    <label><input type="checkbox" name="symptoms" value="varicose_veins"> Varicose Veins</label>
+                    <label><input type="checkbox" name="symptoms" value="lack_of_concentration"> Lack of Concentration</label>
+                    <label><input type="checkbox" name="symptoms" value="knee_pain"> Knee Pain</label>
+                    <label><input type="checkbox" name="symptoms" value="swollen_blood_vessels"> Swollen Blood Vessels</label>
+                    <label><input type="checkbox" name="symptoms" value="polyuria"> Polyuria</label>
+                    <label><input type="checkbox" name="symptoms" value="swollen_legs"> Swollen Legs</label>
+                    <label><input type="checkbox" name="symptoms" value="excessive_hunger"> Excessive Hunger</label>
+                    <label><input type="checkbox" name="symptoms" value="painful_walking"> Painful Walking</label>
+                    <label><input type="checkbox" name="symptoms" value="increased_appetite"> Increased Appetite</label>
+                    <label><input type="checkbox" name="symptoms" value="high_blood_pressure"> High Blood Pressure</label>
+                    <label><input type="checkbox" name="symptoms" value="chest_pain"> Chest Pain</label>
+                    <label><input type="checkbox" name="symptoms" value="shortness_of_breath"> Shortness of Breath</label>
+                    <label><input type="checkbox" name="symptoms" value="unexplained_weight_gain"> Unexplained Weight Gain</label>
+                    <label><input type="checkbox" name="symptoms" value="slow_metabolism"> Slow Metabolism</label>
+                    <label><input type="checkbox" name="symptoms" value="insulin_resistance"> Insulin Resistance</label>
+                    <label><input type="checkbox" name="symptoms" value="joint_pain"> Joint Pain</label>
+                    <label><input type="checkbox" name="symptoms" value="stiffness_in_joints"> Stiffness in Joints</label>
+                    <label><input type="checkbox" name="symptoms" value="fatigue_after_minimal_activity"> Fatigue After Minimal Activity</label>
+                    <label><input type="checkbox" name="symptoms" value="snoring"> Snoring</label>
+                    <label><input type="checkbox" name="symptoms" value="difficulty_breathing_while_lying_down"> Difficulty Breathing While Lying Down</label>
+                    <label><input type="checkbox" name="symptoms" value="chronic_fatigue"> Chronic Fatigue</label>
+                    <label><input type="checkbox" name="symptoms" value="frequent_waking_during_sleep"> Frequent Waking During Sleep</label>
+                    <label><input type="checkbox" name="symptoms" value="depression_or_low_mood"> Depression or Low Mood</label>
+                    <label><input type="checkbox" name="symptoms" value="anxiety"> Anxiety</label>
+                    <label><input type="checkbox" name="symptoms" value="poor_self-esteem"> Poor Self-Esteem</label>
+                    <label><input type="checkbox" name="symptoms" value="social_withdrawal"> Social Withdrawal</label>
+                    <label><input type="checkbox" name="symptoms" value="excessive_sweating"> Excessive Sweating</label>
+                    <label><input type="checkbox" name="symptoms" value="dark_patches_on_skin"> Dark Patches on Skin</label>
+                    <label><input type="checkbox" name="symptoms" value="slow_healing_of_wounds"> Slow Healing of Wounds</label>
+                    <label><input type="checkbox" name="symptoms" value="persistent_inflammation"> Persistent Inflammation</label>
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputField = document.getElementById("selectedSymptoms");
+            const dropdown = document.getElementById("dropdown");
+            const form = document.getElementById("symptomsForm");
+            const result = document.getElementById("result");
+            const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]")?.value;
+            
+            const symptomsTestUrl = "{% url 'symptoms_test_api' %}";
+            console.log("🔹 API URL:", symptomsTestUrl);
+            console.log("🔹 CSRF Token Sent:", csrfToken);
+            if (!csrfToken) {
+                console.error("❌ CSRF token not found. Make sure the form includes <input type='hidden' name='csrfmiddlewaretoken' value='YOUR_CSRF_TOKEN'>.");
+
+                return;
+            }
+    
+            inputField.addEventListener("click", (event) => {
+                event.stopPropagation();
+                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            });
+    
+            document.addEventListener("click", (event) => {
+                if (!dropdown.contains(event.target) && event.target !== inputField) {
+                    dropdown.style.display = "none";
+                }
+            });
+    
+            function updateSelectedSymptoms() {
+                const selectedSymptoms = [...document.querySelectorAll('.dropdown input[type="checkbox"]:checked')]
+                    .map(checkbox => checkbox.value.trim());
+                inputField.value = selectedSymptoms.join(", ");
+            }
+    
+            dropdown.addEventListener("change", updateSelectedSymptoms);
+    
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const selectedSymptoms = [...document.querySelectorAll('.dropdown input[type="checkbox"]:checked')]
+                    .map(checkbox => checkbox.value.trim());
+    
+                if (selectedSymptoms.length === 0) {
+                    alert("Please select at least one symptom.");
+                    return;
+                }
+                
+                result.innerHTML = `<p>Loading results...</p>`;
+                result.style.display = "block";
+                result.style.opacity = "1";
+                const formData = JSON.stringify({ selectedSymptoms });
+    
+                try {
+                    const response = await fetch(symptomsTestUrl, {  // Using the pre-defined URL
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRFToken": "{{ csrf_token }}"
+                        }
+                    });
+    
+                    if (!response.ok) {
+                        throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
+                    }
+    
+                    const data = await response.json();
+                    console.log("🔹 API Response:", data);
+                    if (!data || typeof data !== "object") {
+                        throw new Error("Invalid response structure.");
+                    }
+    
+                    if (data.error) {
+                        alert(`Error: ${data.error}`);
+                    } else {
+                        console.log("✅ Updating result container...");
+                        result.innerHTML = `
+                            <h3>Possible Diagnosis</h3>
+                            <p><strong>Best Match:</strong> ${data.bestMatch}</p>
+                            <p><strong>Other Possible Diseases:</strong> ${data.matchedDiseases.join(", ") || "None"}</p>
+                            <p><strong>Recommendation:</strong> ${data.recommendation || "Consult a doctor for further analysis."}</p>
+                        `;
+                        form.style.opacity = "0";
+                        setTimeout(() => {
+                            form.style.display = "none";
+                            result.classList.add("show");
+                            result.style.opacity = "1"; 
+                        }, 400);
+                    }
+                } catch (error) {
+                    alert("An error occurred. Please try again.");
+                    console.error("❌ Submission error:", error);
+                }
+            });
+        });
+    </script>
+    
+        
+        
+    
+</body>
+</html>

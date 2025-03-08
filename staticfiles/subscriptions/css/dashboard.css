@@ -1,0 +1,387 @@
+@font-face {
+    font-family: 'Kaushan Script';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/kaushanscript/v18/vm8vdRfvXFLG3OLnsO15WYS5DG74wNI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+html body{
+    height: 100%;
+}
+#flower-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    pointer-events: none !important
+}
+.dashboard_page{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.side_bar{
+    width: 20%;
+    height: 100%;
+    background-color: #4A6D7C;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.h_sidebar{
+    list-style-type: none;
+    padding: 0;
+}
+
+.h_sidebar li {
+    margin-bottom: 25px; /* Adds space between each list item */
+}
+
+.home_sidebar{
+    text-decoration: none;
+    color: aliceblue;
+    font-family: 'Philosopher';
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+}
+.home_sidebar:hover{
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+    color: #F2EFE7;
+}
+
+
+.side_menu {
+    top: 0%;
+    left: 2%;
+    width: auto;
+    height: 50%;
+    padding: 20px;
+    z-index: 1000;
+    display: block;
+}
+
+.side_menu img.menu {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    left: 0%;
+    top: 0%;
+    z-index: 2000;
+}
+
+
+/* Mobile Menu Styles */
+.side_menu ul.h {
+    list-style-type: none;
+    padding: 0;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    margin: 0;
+    display: none; /* Ensure it's hidden initially */
+      /* Hidden by default on small screens */
+    opacity: 0;     /* Initially invisible */
+    transition: opacity 0.5s ease-in-out;  /* Fade transition */
+    border-radius: 1rem;
+}
+
+.side_menu ul.h.active {
+    display: block;  /* Make the menu visible */
+    opacity: 1;      /* Fade in */
+}
+
+ul.h.active{
+    top: 15%;
+    left: 20%;
+    border-radius: 1rem;
+    font-family: 'Philosopher';
+}
+.side_menu ul.h li {
+    margin: 4%;
+}
+
+.side_menu ul.h li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 7px;
+    display: block;
+    border-radius: 1rem;
+}
+
+.side_menu ul.h li a:hover {
+    background-color: #555;
+    cursor: pointer;
+}
+
+/* Mobile Menu Styles */
+@media screen and (max-width: 768px) {
+    .side_bar {
+        display: none; /* Hide sidebar on small screens */
+    }
+
+    .side_menu img.menu {
+        display: block; /* Show hamburger menu on mobile */
+    }
+
+    .side_menu ul.h {
+        display: none; /* Hidden initially on mobile */
+    }
+
+    .side_menu ul.h.active {
+        display: block !important;
+        opacity: 1 !important;
+    }
+}
+
+/* PC (large screen) Menu Fade Effect */
+@media screen and (min-width: 769px) {
+    .side_menu ul.h {
+        display: none; /* Always visible on PC */
+        opacity: 0;     /* Ensure it's visible */
+    }
+
+    .side_menu ul.h.active {
+        display: block !important;
+        opacity: 1 !important;
+    }
+}
+#menu-icon {
+    position: relative;
+    z-index: 9999 !important;  /* Ensures it's above all elements */
+    pointer-events: auto !important;  /* Ensures it can be clicked */
+}
+
+.main_sec{
+    border-radius: 8rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    left: 20%;
+}
+
+.f_col{
+    height: 50%;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.rectangle {
+    width: 40%;
+    height: 60%;
+    background: linear-gradient(135deg, #121212, #4A6D7C);
+    border-radius: 1rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease-out;
+}
+.rectangles_take_test {
+    width: 95%;
+    height: 80%;
+    margin-left: 2%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.4s ease-in-out;
+    transform-origin: bottom; /* Makes it bend from the bottom */
+    border-radius: 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.rectangles_take_test:hover {
+    transform: rotateX(30deg);
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #f56c7a;
+}
+
+.side_menu, .rectangle, .rectangles_take_test {
+    display: block !important;
+    opacity: 1 !important;
+}
+.take_tests{
+    text-align: center;
+    margin-top: 2%;
+    font-family: "Philosopher";
+}
+
+
+
+.visit_site{
+    opacity: 0;  /* Initially hidden */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in effect */
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+.visit_site:hover{
+    text-decoration: underline;
+}
+.rectangles_health_status {
+    width: 95%;
+    height: 80%;
+    top: 0;
+    margin-left: 2%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.4s ease-in-out;
+    transform-origin: bottom; /* Makes it bend from the bottom */
+    border-radius: 1rem;
+    text-align: center;
+}
+.rectangles_health_status:hover {
+    transform: rotateX(30deg); /* Adjust for more or less bend */
+    background-color: #c2beb3;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #f56c7a;
+}
+
+.rectangles_send_docs {
+    width: 95%;
+    height: 80%;
+    top: 0;
+    margin-left: 2%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.4s ease-in-out;
+    transform-origin: bottom; /* Makes it bend from the bottom */
+    border-radius: 1rem;
+    text-align: center;
+}
+.rectangles_send_docs:hover {
+    transform: rotateX(30deg); /* Adjust for more or less bend */
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #f56c7a;
+}
+
+.rectangles_medications{
+    width: 95%;
+    height: 80%;
+    top: 0;
+    margin-left: 2%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.4s ease-in-out;
+    transform-origin: bottom; /* Makes it bend from the bottom */
+    border-radius: 1rem;
+    text-align: center;
+}
+.rectangles_medications:hover {
+    transform: rotateX(30deg); /* Adjust for more or less bend */
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #f56c7a;
+}
+
+
+
+/* take testsection */
+.modal{
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    text-align: center;
+}
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #121212, #4A6D7C);
+    height: 50%;
+    width: 50%;
+    border-radius: 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13%;
+    margin-left: 30%;
+}
+.close{
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+.test-option{
+    display: block;
+    margin: 2% 0;
+    padding: 10px;
+    width: 80%;
+    height: 30%;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+.test-option:hover{
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logout-forms{
+    position: relative;
+    right: 4%;
+    top: 3%;
+    background-color: #4CAF50;
+}
