@@ -179,10 +179,10 @@ class Disease(models.Model):
     
 
 class UploadedDocument(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # ✅ Keep user
-    file = models.FileField(upload_to="uploaded_documents/")  # ✅ Rename document -> file
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  #  Keep user
+    file = models.FileField(upload_to="uploaded_documents/")  #  Rename document -> file
     description = models.TextField(blank=True, null=True)
-    uploaded_at = models.DateTimeField(auto_now_add=True)  # ✅ Keep only one timestamp
+    uploaded_at = models.DateTimeField(auto_now_add=True)  #  Keep only one timestamp
 
     def __str__(self):
         return f"{self.user.username} - {self.file.name}"
