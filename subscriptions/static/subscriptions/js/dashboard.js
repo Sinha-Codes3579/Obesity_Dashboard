@@ -1,13 +1,13 @@
 document.getElementById("flower-container").addEventListener("click", function () {
-    console.log("❌ flower-container is blocking clicks!");
+    console.log("flower-container is blocking clicks!");
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("JavaScript Loaded Successfully! ✅");
+    console.log("JavaScript Loaded Successfully! ");
 
-    // ✅ Fix Menu Toggle
+    // Menu toggle
     const menuIcon = document.getElementById("menu-icon");
-    const menuLinks = document.getElementById("h");  // Correct reference
+    const menuLinks = document.getElementById("h");  
 
     if (menuIcon && menuLinks) {
         menuIcon.addEventListener("click", function() {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Fix Rectangle Hover Animation
+    // Rectangle Hover Animation
     const columns = document.querySelectorAll('.f_col');
 
 columns.forEach(column => {
@@ -56,7 +56,7 @@ columns.forEach(column => {
 
 
 
-    // ✅ Fix Take Test Button (Modal)
+    //  Take Test Button (Modal)
     const modal = document.getElementById("testSelectionModal");
     const closeModal = document.querySelector(".close");
 
